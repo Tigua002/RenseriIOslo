@@ -6,6 +6,11 @@ body{
     display: flex;
     justify-content: center;
 }
+
+/* 
+    HEADER
+    HEADER
+*/ 
 .header{
     background-color: #fff;
     justify-content: space-between;
@@ -39,6 +44,16 @@ body{
     background-color: #A88256;
     color: #fff;
 }
+
+/* 
+    HEADER END
+    HEADER END
+*/ 
+
+/* 
+    BESTILL DECS
+    BESTILL DECS
+*/ 
 .bestillDesc{
     background: #A1A16E;
     color: #fff;
@@ -50,4 +65,81 @@ body{
 }
 .bestillSubBreak{
     margin: 2rem 0rem 2rem 0rem;
+}
+
+/* 
+    BESTILL DECS END
+    BESTILL DECS END
+*/ 
+
+/* 
+    GJENSTANDER header
+    GJENSTANDER header
+*/ 
+.gjenstanderNav{
+    width: 100%;
+    border-top: #A88256 2px solid;
+    border-bottom: #A88256 2px solid;
+    font-size: 1.2rem;
+    padding: 1rem;
+    justify-content: start;
+}
+.gjenstanderNavItem{
+    text-decoration: none;
+    color: #000000;
+    margin-right: 3rem;
+    font-weight: 100;
+    padding: 1.2rem 1.8rem 1.2rem 1.8rem;
+    border-radius: 2rem;
+}
+.gjenstanderNavItemSelect{
+    background-color: #A88256;
+    color: #ffffff;
+}
+
+/* 
+    Gjenstander body
+    Gjenstander body
+*/ 
+
+.listings{
+    font-size: 1rem;
+    font-weight: 100;
+    padding-top: 5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.kategori{
+    border: solid 1px #000000;
+    width: 25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    margin: 0rem 2rem 5rem 2rem;
+}
+.gjenstander{
+    margin: 1rem;
+    padding: 1rem;
+    border: solid 1px #000000;
+    border-radius: 1rem;
+    width: 80%;
+    justify-content: start;
+    align-items: center;
+    
+}
+.katTitle{
+    width: 90%;
+    border-bottom: 1px #000000 solid;
+    text-align: center
+
+}
+.gjenstandBilde{
+    height: 7rem;
+}
+.gjenstandNavn{
+    font-size: 2.5rem;
+    margin: 1rem;
 }
