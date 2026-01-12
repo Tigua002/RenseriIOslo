@@ -15,7 +15,26 @@ const connection = mysql.createConnection({
     password: process.env.DBPASS,
     database: process.env.DB
 });
-connection.connect();
+connection.connect((err) => {
+    if (err) {
+        console.error('Failed to connect to database!', err);
+        
+        if (err.code === 'ETIMEDOUT') {
+            console.error('→ Connection timeout! Check: network, firewall, DB is running?');
+        }
+        else if (err.code === 'ECONNREFUSED') {
+            console.error('→ Connection refused — is MySQL running? Wrong port/host?');
+        }
+        else if (err.code === 'ER_ACCESS_DENIED_ERROR') {
+            console.error('→ Wrong username/password');
+        }
+        
+        // Usually good idea to exit in development
+        // In production → maybe retry logic instead
+        process.exit(1);
+        return;
+    }
+});
 app.listen(PORT, () => console.log(`Server er online og aktiv på:  localhost:${PORT}`));
 
 
