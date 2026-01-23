@@ -1,3 +1,9 @@
+const state = {
+    dialog: null,
+    dialogActive: false,
+    dialogDiv: null,
+};
+
 const loadItems = async () => {
     try {
         const response = await fetch("/get/Items", {
@@ -22,28 +28,27 @@ const loadItems = async () => {
             return acc;
         }, []);
         console.log(uniqueItems);
-        let listings = document.getElementsByClassName("listings")[0]
-        uniqueItems.forEach((kat) => {         
-            let CatDiv = document.createElement("div")
-            let CatTitle = document.createElement("h1")
+        let listings = document.getElementsByClassName("listings")[0];
+        uniqueItems.forEach((kat) => {
+            let CatDiv = document.createElement("div");
+            let CatTitle = document.createElement("h1");
 
-            listings.appendChild(CatDiv)
-            CatDiv.appendChild(CatTitle)
-            CatDiv.setAttribute("class", "kategori flex")
-            CatDiv.setAttribute("id", kat)
+            listings.appendChild(CatDiv);
+            CatDiv.appendChild(CatTitle);
+            CatDiv.setAttribute("class", "kategori flex");
+            CatDiv.setAttribute("id", kat);
 
-            CatTitle.setAttribute("class", "katTitle")
-            CatTitle.textContent = kat
-        })
-        
+            CatTitle.setAttribute("class", "katTitle");
+            CatTitle.textContent = kat;
+        });
 
         answer.forEach((item) => {
-            let kat = document.getElementById(item.Kategori)
+            let kat = document.getElementById(item.Kategori);
             let gjenstand = document.createElement("div");
             let bilde = document.createElement("img");
             let itemName = document.createElement("p");
 
-            kat.appendChild(gjenstand)
+            kat.appendChild(gjenstand);
             gjenstand.appendChild(bilde);
             gjenstand.appendChild(itemName);
             gjenstand.setAttribute("class", "gjenstander flex");
@@ -51,13 +56,12 @@ const loadItems = async () => {
             bilde.setAttribute("class", "gjenstandBilde");
             bilde.setAttribute("src", "./" + item.Bilde);
 
-            itemName.setAttribute("class", "gjenstandNavn")
-            itemName.textContent = item.Navn
+            itemName.setAttribute("class", "gjenstandNavn");
+            itemName.textContent = item.Navn;
 
             gjenstand.addEventListener("click", () => {
-                
-            })
-
+                openSale("popUpDialog", item.Navn, "popUp");
+            });
         });
     } catch (err) {
         console.log(err);
@@ -65,3 +69,51 @@ const loadItems = async () => {
     }
 };
 loadItems();
+
+document.addEventListener("click", (event) => {
+    // Check if the click is outside the dialog
+    
+    if (!document.getElementsByClassName(state.dialogDiv)[0]){
+        return
+    }
+        if (
+            !document
+                .getElementsByClassName(state.dialogDiv)[0]
+                .contains(event.target) &&
+            state.dialogActive
+        ) {
+            closeModal(state.dialog);
+        }
+});
+
+
+const openSale = (name, item, div) => {
+    let modal = document.getElementsByClassName(name)[0];
+    modal.showModal();
+    modal.style.display = "flex";
+    if (item) {
+        document.getElementsByClassName("DialogTitle")[0].textContent = item;
+    }
+    state.dialog = JSON.parse(JSON.stringify(name));
+    state.dialogActive = true;
+    setTimeout(() => {state.dialogDiv = JSON.parse(JSON.stringify(div))}, 50)
+    
+    
+    
+};
+const openModal = (name) => {
+    let modal = document.getElementsByClassName(name)[0];
+    modal.showModal();
+    modal.style.display = "flex";
+    state.dialog = JSON.parse(JSON.stringify(name));
+    state.dialogActive = true;
+};
+
+const closeModal = (name) => {
+    let modal = document.getElementsByClassName(name)[0];
+    modal.close();
+    modal.style.display = "none";
+    state.dialog = null;
+    state.dialogDiv = null;
+};
+
