@@ -53,8 +53,6 @@ app.post("/get/Items", (req, res) => {
             if (err) {
                 return res.status(500).send({message: "Error fetching processes"});
             }
-            console.log(JSON.parse(JSON.stringify(result)));
-
             res.status(200).json(JSON.parse(JSON.stringify(result)));
         },
     );

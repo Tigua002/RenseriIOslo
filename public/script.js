@@ -117,3 +117,20 @@ const closeModal = (name) => {
     state.dialogDiv = null;
 };
 
+
+
+document.getElementById("minus").addEventListener("click", () => {
+    if (!document.getElementsByClassName("numberValue")[0].value || document.getElementsByClassName("numberValue")[0].value <= 0) {
+        document.getElementsByClassName("numberValue")[0].value = 0
+        return
+    }
+
+    document.getElementsByClassName("numberValue")[0].value = document.getElementsByClassName("numberValue")[0].value - 1
+})
+document.getElementById("plus").addEventListener("click", () => {
+    if (!document.getElementsByClassName("numberValue")[0].value) {
+        document.getElementsByClassName("numberValue")[0].value = 0
+    }
+    
+    document.getElementsByClassName("numberValue")[0].value= parseInt(document.getElementsByClassName("numberValue")[0].value) + 1
+})

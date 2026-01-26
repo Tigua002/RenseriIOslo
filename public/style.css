@@ -192,5 +192,88 @@ body {
 }
 .DialogTitle{
     color: #a88256;
+    font-size: 3rem;
+    margin-top: 0rem;
+}
+.tjeneste{
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 0%;
+    margin: .4rem;
 }
 
+.tjenesterTitle{
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 1rem 0rem 1rem 0rem;
+}
+.tjenesterCheck{
+    width: 1.6rem;
+    height: 1.6rem;
+    
+}
+.tjenesteDesc{
+    font-size: 1.6rem;
+    padding: 0%;
+    margin: 0%;
+}
+.kommentarTitle{
+    color: #a88256;
+    font-size: 2rem;
+    font-weight: 100;
+}
+.kommentarText{
+    width: 48.4rem;
+    margin: 0%;
+    height: 5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: .8rem;
+}
+.antallText{
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: #a88256;
+    font-weight: 100;
+}
+.antall{
+    height: 4rem;
+    width: 12rem;
+    border: solid 1px #333539;
+    flex-direction: row;
+}
+.numberValue{
+    border: none;
+    outline: none; 
+    font-size: 2rem;
+    width: 4rem;
+    text-align: center;
+}
+
+.plusMinus{
+    background: none;
+    font-size: 2rem;
+    width: 4rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.numberValue::-webkit-outer-spin-button,
+.numberValue::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.cartDiv{
+    margin-top: 4rem;
+    border-top: solid 1px #000000;
+    padding-top: 1rem;
+}
+.setIKurv{
+    background-color: #a88256;
+    color: #fff;
+    border: solid 1px #333539;
+    height: 3rem;
+    font-size: 1rem;
+    width: 50rem;
+}

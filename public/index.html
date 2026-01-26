@@ -233,9 +233,39 @@
         <dialog class="popUpDialog flex">
             <div class="popUp flex">
                 <h1 class="DialogTitle">Jakke</h1>
-                <div class="tjenester"></div>
+                <div class="tjenester flex">
+                    <h1 class="tjenesterTitle">Tjenester vi har *</h1>
+                    <div class="tjeneste flex">
+                        <input type="checkbox" class="tjenesterCheck"/>
+                        <p class="tjenesteDesc">Rens (+300kr)</p>
+                    </div>
+                    <div class="tjeneste flex">
+                        <input type="checkbox" class="tjenesterCheck"/>
+                        <p class="tjenesteDesc">Bytte glidelås (+300kr)</p>
+                    </div>
+                    <div class="tjeneste flex">
+                        <input type="checkbox" class="tjenesterCheck"/>
+                        <p class="tjenesteDesc">Fikse hull i jakke (+250kr)</p>
+                    </div>
+                    <div class="tjeneste flex">
+                        <input type="checkbox" class="tjenesterCheck"/>
+                        <p class="tjenesteDesc">Knapp (+100kr)</p>
+                    </div>
+                </div>
                 <div class="ekstra"></div>
-                <button class="setIKurv">Legg i handlekurv | 0,00</button>
+                <div class="kommentar">
+                    <h1 class="kommentarTitle">Ekstra forespørsel</h1>
+                    <textarea name="" id="" class="kommentarText" placeholder="Skriv inn extra informasjon"></textarea>
+                </div>
+                <h1 class="antallText">Antall</h1>
+                <div class="antall flex">
+                    <button id="minus" class="plusMinus">-</button>
+                    <input type="number" min="0" class="numberValue" value="0">
+                    <button id="plus" class="plusMinus">+</button>
+                </div>
+                <div class="cartDiv">
+                    <button class="setIKurv">Legg i handlekurv | 0,00</button>
+                </div>
             </div>
         </dialog>
     </body>
