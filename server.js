@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const path = require("path");
 const PORT = process.env.PORT;
 let db = process.env.DB
 console.log(process.env.DB);
@@ -54,7 +53,7 @@ app.post("/get/Items", (req, res) => {
     console.log("inn");
     
     connection.query(
-        "SELECT * FROM ??.Items",
+        "SHOW TABLES",
         [db],
         (err, result) => {
             if (err) {
@@ -62,6 +61,8 @@ app.post("/get/Items", (req, res) => {
                 return res.status(500).send({message: "Error fetching processes"});
                 
             }
+            console.log(result);
+            
             console.log("send");
             
             res.status(200).json(JSON.parse(JSON.stringify(result)));
