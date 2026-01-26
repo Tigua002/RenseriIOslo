@@ -4,6 +4,10 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT;
 let db = process.env.DB
+console.log(process.env.DB);
+console.log(process.env.DBUSER);
+console.log(process.env.DBPASS);
+
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
