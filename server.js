@@ -46,13 +46,19 @@ app.get("/", (req, res) => {
 });
 
 app.post("/get/Items", (req, res) => {
+    console.log("inn");
+    
     connection.query(
         "SELECT * FROM ??.Items",
         [process.env.DB],
         (err, result) => {
             if (err) {
                 return res.status(500).send({message: "Error fetching processes"});
+                console.log(err);
+                
             }
+            console.log("send");
+            
             res.status(200).json(JSON.parse(JSON.stringify(result)));
         },
     );
