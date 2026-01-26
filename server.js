@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT;
+let db = process.env.DB
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -50,7 +51,7 @@ app.post("/get/Items", (req, res) => {
     
     connection.query(
         "SELECT * FROM ??.Items",
-        [process.env.DB],
+        [db],
         (err, result) => {
             if (err) {
                 console.log(err);
