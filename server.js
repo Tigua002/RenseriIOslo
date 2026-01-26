@@ -53,8 +53,8 @@ app.post("/get/Items", (req, res) => {
         [process.env.DB],
         (err, result) => {
             if (err) {
-                return res.status(500).send({message: "Error fetching processes"});
                 console.log(err);
+                return res.status(500).send({message: "Error fetching processes"});
                 
             }
             console.log("send");
