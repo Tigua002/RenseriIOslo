@@ -53,7 +53,7 @@ app.post("/get/Items", (req, res) => {
     console.log("inn");
     
     connection.query(
-        "SHOW TABLES",
+        "SELECT * FROM ??.Items",
         [db],
         (err, result) => {
             if (err) {
@@ -61,8 +61,6 @@ app.post("/get/Items", (req, res) => {
                 return res.status(500).send({message: "Error fetching processes"});
                 
             }
-            console.log(result);
-            
             console.log("send");
             
             res.status(200).json(JSON.parse(JSON.stringify(result)));
