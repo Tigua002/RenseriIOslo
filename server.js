@@ -53,7 +53,7 @@ app.post("/get/Items", (req, res) => {
     console.log("inn");
     
     connection.query(
-        "SELECT * FROM ??.Items",
+        "SELECT * FROM L1TbJWIDuyCEcrrSrJ.Items",
         [db],
         (err, result) => {
             if (err) {
