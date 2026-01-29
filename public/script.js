@@ -3,6 +3,12 @@ const state = {
     dialogActive: false,
     dialogDiv: null,
 };
+let order = {
+    Navn: "Jakke",
+    Antall: 5,
+    Kommentar: "Veldig lang kommentar",
+    Ekstra: ["Rens", "Bytte glidelås", "Fikse hull i jakke", "Knapp"]
+}
 
 const loadItems = async () => {
     try {
@@ -72,18 +78,18 @@ loadItems();
 
 document.addEventListener("click", (event) => {
     // Check if the click is outside the dialog
-    
-    if (!document.getElementsByClassName(state.dialogDiv)[0]){
+
+    if (!document.getElementsByClassName(state.dialogDiv)[0]) {
         return
     }
-        if (
-            !document
-                .getElementsByClassName(state.dialogDiv)[0]
-                .contains(event.target) &&
-            state.dialogActive
-        ) {
-            closeModal(state.dialog);
-        }
+    if (
+        !document
+            .getElementsByClassName(state.dialogDiv)[0]
+            .contains(event.target) &&
+        state.dialogActive
+    ) {
+        closeModal(state.dialog);
+    }
 });
 
 
@@ -96,7 +102,7 @@ const openSale = (name, item, div) => {
     }
     state.dialog = JSON.parse(JSON.stringify(name));
     state.dialogActive = true;
-    setTimeout(() => {state.dialogDiv = JSON.parse(JSON.stringify(div))}, 50)
+    setTimeout(() => { state.dialogDiv = JSON.parse(JSON.stringify(div)) }, 50)
     
     
     
@@ -118,19 +124,60 @@ const closeModal = (name) => {
 };
 
 
+const calcValue = () => {
+    try {
+        let total = 200
+        let collection = document.getElementsByClassName("tjenesterCheck")
+        
+        for (let i = 0; i < collection.length; i++) {
+            const Tjeneste = collection[i];
+            if(Tjeneste.checked) {
+                total += parseInt(Tjeneste.id)
+            }
+            
+        }
+        let sum = total * document.getElementsByClassName("numberValue")[0].value
+        document.getElementsByClassName("setIKurv")[0].textContent = `Legg i handlekurv | ${sum}kr`
+        
+
+
+        
+
+    } catch (err) {
+        console.error(err)
+        // window.location.reload()
+    }
+}
 
 document.getElementById("minus").addEventListener("click", () => {
     if (!document.getElementsByClassName("numberValue")[0].value || document.getElementsByClassName("numberValue")[0].value <= 0) {
         document.getElementsByClassName("numberValue")[0].value = 0
+        calcValue()
         return
     }
 
+
     document.getElementsByClassName("numberValue")[0].value = document.getElementsByClassName("numberValue")[0].value - 1
+    calcValue()
 })
 document.getElementById("plus").addEventListener("click", () => {
     if (!document.getElementsByClassName("numberValue")[0].value) {
         document.getElementsByClassName("numberValue")[0].value = 0
+        
     }
-    
-    document.getElementsByClassName("numberValue")[0].value= parseInt(document.getElementsByClassName("numberValue")[0].value) + 1
+
+    document.getElementsByClassName("numberValue")[0].value = parseInt(document.getElementsByClassName("numberValue")[0].value) + 1
+    calcValue()
 })
+
+
+let collection = document.getElementsByClassName("tjeneste")
+for (let i = 0; i < collection.length; i++) {
+    const Tjeneste = collection[i]
+    console.log(Tjeneste);
+    
+    Tjeneste.addEventListener("click", () => {
+        calcValue()
+    })
+    
+}

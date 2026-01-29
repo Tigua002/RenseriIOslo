@@ -54,7 +54,6 @@ app.post("/get/Items", (req, res) => {
     
     connection.query(
         "SELECT * FROM L1TbJWIDuyCEcrrSrJ.Items",
-        [db],
         (err, result) => {
             if (err) {
                 console.log(err);
